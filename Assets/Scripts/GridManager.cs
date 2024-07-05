@@ -8,15 +8,16 @@ public class GridManager : MonoBehaviour {
 
   private Grid<GridObject> grid;
 
-  int gridWidth = 2;
-  int gridHeight = 2;
-  float cellSize = 2f;
+  [SerializeField] private int gridWidth;
+  private int gridHeight;
+  [SerializeField] private float cellSize = 2f;
 
   private void Awake() {
     Instance = this;
   }
 
   private void Start() {
+    gridHeight = gridWidth;
     grid = new Grid<GridObject>(gridWidth, gridHeight, cellSize, new Vector3(0, 0, 0), (Grid<GridObject> g, int x, int z) => new GridObject());
 
     Setup();
@@ -27,9 +28,9 @@ public class GridManager : MonoBehaviour {
     foreach (CellStackSO cellStack in currentLevel.cellStackSOList) {
       int depth = 0;
       foreach (CellSO cell in cellStack.CellSOList) {
-        int x = Mathf.FloorToInt(stackIndex / 2);
+        int x = Mathf.FloorToInt(stackIndex / gridWidth);
         float yOffset = depth * 0.1f;
-        int z = stackIndex % 2;
+        int z = stackIndex % gridWidth;
         Vector3 gridPosition = new Vector3(x, yOffset, z) * grid.GetCellSize() + .5f * grid.GetCellSize() * Vector3.one;
         Transform cellTransform = Instantiate(cell.prefab, gridPosition, Quaternion.identity);
 

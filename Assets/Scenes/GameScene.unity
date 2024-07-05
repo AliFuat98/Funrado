@@ -455,6 +455,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: {fileID: 11400000, guid: 110162b64daaeb7479cbfac3109eb68b, type: 2}
+  gridWidth: 3
+  gridHeight: 3
+  cellSize: 1.5
 --- !u!4 &534060046
 Transform:
   m_ObjectHideFlags: 0

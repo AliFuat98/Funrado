@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CellSOList:
   - {fileID: 11400000, guid: 03e038818d696714ca5e584eba2a5dd1, type: 2}
-  - {fileID: 11400000, guid: 7c2dcc669e3b25b42a3ff3f59c1f64f3, type: 2}

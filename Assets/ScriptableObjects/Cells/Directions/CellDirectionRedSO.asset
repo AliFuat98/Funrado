@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CellDirectionRedSO
   m_EditorClassIdentifier: 
   nameString: CellFrogBlue
-  prefab: {fileID: 3437644357715222240, guid: 72e4478413de7bc4db511d60678c7227, type: 3}
-  cellColor: 3
+  prefab: {fileID: 6910686488073692817, guid: bc29ceb74c20c5d478f95625128e593c, type: 3}
+  cellColor: 0
