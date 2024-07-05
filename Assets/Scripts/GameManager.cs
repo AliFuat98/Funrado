@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class GameManager : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+  [SerializeField] private LayerMask mouseColliderLayerMask = new LayerMask();
+  // Start is called before the first frame update
+  void Start() {
+  }
+
+  // Update is called once per frame
+  void Update() {
+    if (Input.GetKeyDown(KeyCode.Mouse0)) {
+      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+      if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask)) {
+        Debug.Log(raycastHit.transform.name);
+      }
     }
+  }
 }

@@ -22,28 +22,19 @@ public class GridPrefabVisual : MonoBehaviour {
 
     int stackIndex = 0;
     foreach (CellStackSO cellStack in currentLevel.cellStackSOList) {
-      int depthOffset = 0;
+      int depth = 0;
       foreach (CellSO cell in cellStack.CellSOList) {
-        Vector3 gridPosition = new Vector3(Mathf.FloorToInt(stackIndex / 2), depthOffset *0.1f, stackIndex % 2) * grid.GetCellSize() + Vector3.one * grid.GetCellSize() * .5f;
-        Instantiate(cell.prefab, gridPosition, Quaternion.identity);
-        depthOffset++;
+        int x = Mathf.FloorToInt(stackIndex / 2);
+        float yOffset = depth * 0.1f;
+        int z = stackIndex % 2;
+        Vector3 gridPosition = new Vector3(x, yOffset, z) * grid.GetCellSize() + .5f * grid.GetCellSize() * Vector3.one;
+        Transform cellTransform = Instantiate(cell.prefab, gridPosition, Quaternion.identity);
+        cellTransform.GetComponent<Cell>().SetVar(x, z, depth, cell.cellColor);
+        depth++;
       }
 
       stackIndex++;
     }
-
-    //for (int x = 0; x < grid.GetWidth(); x++) {
-    //  for (int z = 0; z < grid.GetHeight(); z++) {
-    //    Vector3 gridPosition = new Vector3(x, 0, z) * grid.GetCellSize() + Vector3.one * grid.GetCellSize() * .5f;
-    //    if (z < cellSOList.Count) {
-    //      Transform visualNode = Instantiate(cellSOList[z].prefab, gridPosition, Quaternion.identity);
-    //      visualNodeArray[x, z] = visualNode;
-    //    } else {
-    //      Transform visualNode = Instantiate(pfGridPrefabVisualNode, gridPosition, Quaternion.identity);
-    //      visualNodeArray[x, z] = visualNode;
-    //    }
-    //  }
-    //}
   }
 
   public class GridObject {

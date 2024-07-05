@@ -6,7 +6,13 @@ using UnityEngine;
 public class CellSO : ScriptableObject {
   public string nameString;
   public Transform prefab;
-  public int x;
-  public int z;
-  public int k;
+  public CellColor cellColor;
+}
+
+public enum CellColor {
+  Blue,
+  Green,
+  Purple,
+  Red,
+  Yellow,
 }
