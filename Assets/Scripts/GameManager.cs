@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour {
     if (Input.GetKeyDown(KeyCode.Mouse0)) {
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
       if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask)) {
-        Debug.Log(raycastHit.transform.name);
+        var cell = raycastHit.transform.GetComponent<Cell>();
+        GridManager.Instance.ClickCell(cell);
       }
     }
   }

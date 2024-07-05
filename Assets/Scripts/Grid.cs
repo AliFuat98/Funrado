@@ -26,18 +26,21 @@ public class Grid<TGridObject> {
     }
   }
 
-
   //public Vector3 GetWorldPosition(int x, int z) {
   //  return new Vector3(x, 0, z) * cellSize + originPosition;
   //}
 
-  //public TGridObject GetGridObject(int x, int z) {
-  //  if (x >= 0 && z >= 0 && x < width && z < height) {
-  //    return gridArray[x, z];
-  //  } else {
-  //    return default(TGridObject);
-  //  }
-  //}
+  public TGridObject[,] GetGridArray() {
+    return gridArray;
+  }
+
+  public TGridObject GetGridObject(int x, int z) {
+    if (x >= 0 && z >= 0 && x < width && z < height) {
+      return gridArray[x, z];
+    } else {
+      return default;
+    }
+  }
 
   // getters
   public int GetWidth() {
@@ -51,5 +54,4 @@ public class Grid<TGridObject> {
   public float GetCellSize() {
     return cellSize;
   }
-
 }
