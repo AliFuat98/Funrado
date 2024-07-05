@@ -6,7 +6,7 @@ public class GridManager : MonoBehaviour {
 
   [SerializeField] private LevelSO currentLevel;
 
-  private Grid<GridObject> grid;
+  public Grid<GridObject> grid { get; private set; }
 
   [SerializeField] private int gridWidth;
   private int gridHeight;
@@ -29,7 +29,7 @@ public class GridManager : MonoBehaviour {
       int depth = 0;
       foreach (CellSO cell in cellStack.CellSOList) {
         int x = Mathf.FloorToInt(stackIndex / gridWidth);
-        float yOffset = depth * 0.1f;
+        float yOffset = depth * 0.05f;
         int z = stackIndex % gridWidth;
         Vector3 gridPosition = new Vector3(x, yOffset, z) * grid.GetCellSize() + .5f * grid.GetCellSize() * Vector3.one;
         Transform cellTransform = Instantiate(cell.prefab, gridPosition, Quaternion.identity);
@@ -38,7 +38,7 @@ public class GridManager : MonoBehaviour {
         grid.GetGridObject(x, z).Push(cellTransform);
 
         // assign cell variables
-        cellTransform.GetComponent<Cell>().SetVar(x, z, depth, cell.cellColor);
+        cellTransform.GetComponent<Cell>().SetVar(x, z, depth, cell.cellColor, cell.direction);
 
         depth++;
       }
@@ -53,28 +53,6 @@ public class GridManager : MonoBehaviour {
         gridArray[x, z].TopCell().ShowPlacedObject();
       }
     }
-  }
-
-  public void ClickCell(Cell cell) {
-    var gridObject = grid.GetGridObject(cell.X, cell.Z);
-
-    Cell topCell = gridObject.TopCell();
-
-    if (topCell is CellFrog) {
-
-      CellFrog frog = gridObject.TopCell() as CellFrog;
-      //Vector2 rightDirectionVector = new(1,0);
-      var nextGridObject = grid.GetGridObject(cell.X + 1, cell.Z);
-
-      frog.DrawNextLine(nextGridObject.TopCellPosition());
-
-      return;
-    }
-
-
-    
-
-    Debug.Log("clicked other cells");
   }
 
   // ** transform is a container for cell **

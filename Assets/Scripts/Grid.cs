@@ -40,9 +40,12 @@ public class Grid<TGridObject> {
     }
   }
 
-  public TGridObject GetGridObject(Vector2Int vector) {
-    if (vector.x >= 0 && vector.y >= 0 && vector.x < width && vector.y < height) {
-      return gridArray[vector.x, vector.y];
+  public TGridObject GetGridObject(int x, int z, Vector2Int lookDirVector) {
+    x += lookDirVector.x;
+    z += lookDirVector.y;
+
+    if (x >= 0 && z >= 0 && x < width && z < height) {
+      return gridArray[x, z];
     } else {
       return default;
     }

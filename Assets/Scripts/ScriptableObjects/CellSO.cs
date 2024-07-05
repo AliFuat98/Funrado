@@ -7,6 +7,7 @@ public class CellSO : ScriptableObject {
   public string nameString;
   public Transform prefab;
   public CellColor cellColor;
+  public Direction direction;
 }
 
 public enum CellColor {
@@ -15,4 +16,11 @@ public enum CellColor {
   Purple,
   Red,
   Yellow,
+}
+
+public enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
 }

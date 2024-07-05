@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8aa31c68e3aa5b447a336d0cbb3ffa80, type: 3}
-  m_Name: CellDirectionRedSO
+  m_Name: CellFrogYellowRightSO
   m_EditorClassIdentifier: 
-  nameString: CellFrogBlue
-  prefab: {fileID: 6910686488073692817, guid: bc29ceb74c20c5d478f95625128e593c, type: 3}
-  cellColor: 0
+  nameString: CellFrogYellow
+  prefab: {fileID: 3235323372754623602, guid: 9dffaa03a1b16244582b993d58d3afbf, type: 3}
+  cellColor: 4
+  direction: 3

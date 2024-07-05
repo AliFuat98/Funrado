@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -15,8 +13,7 @@ public class GameManager : MonoBehaviour {
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
       if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask)) {
         var cell = raycastHit.transform.GetComponent<Cell>();
-
-        GridManager.Instance.ClickCell(cell);
+        cell.StartEating();
       }
     }
   }

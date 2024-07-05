@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4825561386fd1474aa13d73d7c227880, type: 3}
-  m_Name: Stack4
+  m_Script: {fileID: 11500000, guid: 8aa31c68e3aa5b447a336d0cbb3ffa80, type: 3}
+  m_Name: CellDirectionGreenLeftSO
   m_EditorClassIdentifier: 
-  CellSOList:
-  - {fileID: 11400000, guid: afa8149a871c6c3469e4358002b2ae19, type: 2}
-  - {fileID: 11400000, guid: 7230bf5c826eb8d4eaa159ee07bc9956, type: 2}
+  nameString: CellFrogBlue
+  prefab: {fileID: 4615410578675389555, guid: 93dc4d39835defa4e87130872c28da48, type: 3}
+  cellColor: 1
+  direction: 2
