@@ -50,7 +50,7 @@ public class GridManager : MonoBehaviour {
     GridObject[,] gridArray = grid.GetGridArray();
     for (int x = 0; x < gridArray.GetLength(0); x++) {
       for (int z = 0; z < gridArray.GetLength(1); z++) {
-        gridArray[x, z].Top().GetComponent<Cell>().ShowPlacedObject();
+        gridArray[x, z].TopCell().ShowPlacedObject();
       }
     }
   }
@@ -58,10 +58,21 @@ public class GridManager : MonoBehaviour {
   public void ClickCell(Cell cell) {
     var gridObject = grid.GetGridObject(cell.X, cell.Z);
 
-    if (gridObject.IsTopCellFrog()) {
-      Debug.Log("clicked frog");
+    Cell topCell = gridObject.TopCell();
+
+    if (topCell is CellFrog) {
+
+      CellFrog frog = gridObject.TopCell() as CellFrog;
+      //Vector2 rightDirectionVector = new(1,0);
+      var nextGridObject = grid.GetGridObject(cell.X + 1, cell.Z);
+
+      frog.DrawNextLine(nextGridObject.TopCellPosition());
+
       return;
     }
+
+
+    
 
     Debug.Log("clicked other cells");
   }
@@ -75,28 +86,28 @@ public class GridManager : MonoBehaviour {
     }
 
     public Transform Pop() {
-      var popedCell = stack.Pop();
-      Destroy(popedCell.gameObject);
+      var popedCellTransform = stack.Pop();
+      Destroy(popedCellTransform.gameObject);
 
       if (stack.Count > 0) {
         var newTopCell = stack.Peek();
         newTopCell.GetComponent<Cell>().ShowPlacedObject();
 
-        return popedCell;
+        return popedCellTransform;
       }
       return null;
     }
 
-    public Transform Top() {
+    public Cell TopCell() {
       if (stack.Count > 0) {
-        return stack.Peek();
+        return stack.Peek().GetComponent<Cell>();
       }
       return null;
     }
 
-    public bool IsTopCellFrog() {
+    public Vector3 TopCellPosition() {
       if (stack.Count > 0) {
-        return stack.Peek().GetComponent<Cell>() is CellFrog;
+        return stack.Peek().position;
       }
       return default;
     }

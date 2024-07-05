@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Grid<TGridObject> {
@@ -37,6 +35,14 @@ public class Grid<TGridObject> {
   public TGridObject GetGridObject(int x, int z) {
     if (x >= 0 && z >= 0 && x < width && z < height) {
       return gridArray[x, z];
+    } else {
+      return default;
+    }
+  }
+
+  public TGridObject GetGridObject(Vector2Int vector) {
+    if (vector.x >= 0 && vector.y >= 0 && vector.x < width && vector.y < height) {
+      return gridArray[vector.x, vector.y];
     } else {
       return default;
     }
