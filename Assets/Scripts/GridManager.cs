@@ -56,8 +56,14 @@ public class GridManager : MonoBehaviour {
   }
 
   public void ClickCell(Cell cell) {
-    var gridObjecT = grid.GetGridObject(cell.X, cell.Z);
-    gridObjecT.Pop();
+    var gridObject = grid.GetGridObject(cell.X, cell.Z);
+
+    if (gridObject.IsTopCellFrog()) {
+      Debug.Log("clicked frog");
+      return;
+    }
+
+    Debug.Log("clicked other cells");
   }
 
   // ** transform is a container for cell **
@@ -86,6 +92,13 @@ public class GridManager : MonoBehaviour {
         return stack.Peek();
       }
       return null;
+    }
+
+    public bool IsTopCellFrog() {
+      if (stack.Count > 0) {
+        return stack.Peek().GetComponent<Cell>() is CellFrog;
+      }
+      return default;
     }
 
     public int StackCount() {
