@@ -10,6 +10,8 @@ public class Cell : MonoBehaviour {
 
   [SerializeField] protected GameObject PlacedObject;
 
+  private bool isBusy = false;
+
   public void SetVar(int x, int z, int k, CellColor color, Direction direction) {
     X = x; Z = z; K = k; Color = color; LookDirection = direction;
     RotatePlacedObject();
@@ -26,6 +28,14 @@ public class Cell : MonoBehaviour {
   }
 
   public virtual void StartEating() {
+  }
+
+  public void SetBusy(bool busy) {
+    isBusy = busy;
+  }
+
+  public bool IsCellBusy() {
+    return isBusy;
   }
 
   private void RotatePlacedObject() {

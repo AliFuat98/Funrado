@@ -44,7 +44,7 @@ public class DrawLine : MonoBehaviour {
 
       // tongue settings
       tongue.transform.position = currentPoint;
-      tongue.StartMoving();
+      tongue.StartMovingForward();
 
       yield return null;
     }
@@ -74,7 +74,7 @@ public class DrawLine : MonoBehaviour {
 
       // tongue settings
       tongue.transform.position = currentPoint;
-      tongue.StartMoving();
+      tongue.StartMovingBackward();
       yield return null;
     }
 
