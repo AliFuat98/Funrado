@@ -31,4 +31,12 @@ public class CellFrog : Cell {
 
     Debug.Log("clicked other cells");
   }
+
+  public void ContinueEating(Cell lastCell) {
+    var grid = GridManager.Instance.grid;
+
+    var nextGridObject = grid.GetGridObject(lastCell.X, lastCell.Z, LookDirectionVector);
+    float offset = .2f;
+    DrawNextLine(nextGridObject.TopCellPosition() + new Vector3(0, offset, 0));
+  }
 }
