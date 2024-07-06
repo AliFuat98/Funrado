@@ -5,6 +5,7 @@ using UnityEngine;
 public class DrawLine : MonoBehaviour {
   private LineRenderer lineRenderer;
   private List<Vector3> points;
+  [SerializeField] private Tongue tongue;
 
   [SerializeField] private Transform startPoint;
 
@@ -40,9 +41,15 @@ public class DrawLine : MonoBehaviour {
       Vector3 currentPoint = Vector3.Lerp(startPoint, endPoint, t);
       lineRenderer.SetPosition(points.Count - 2, startPoint);
       lineRenderer.SetPosition(points.Count - 1, currentPoint);
+
+      // tongue settings
+      tongue.transform.position = currentPoint;
+      tongue.StartMoving();
+
       yield return null;
     }
 
+    tongue.StopMoving();
     lineRenderer.SetPosition(points.Count - 1, endPoint);
   }
 
@@ -64,8 +71,14 @@ public class DrawLine : MonoBehaviour {
       float t = elapsedTime / duration;
       Vector3 currentPoint = Vector3.Lerp(endPoint, startPoint, t);
       lineRenderer.SetPosition(points.Count - 1, currentPoint);
+
+      // tongue settings
+      tongue.transform.position = currentPoint;
+      tongue.StartMoving();
       yield return null;
     }
+
+    tongue.StopMoving();
 
     // Son noktayý listeden ve stack'ten çýkar
     points.RemoveAt(points.Count - 1);

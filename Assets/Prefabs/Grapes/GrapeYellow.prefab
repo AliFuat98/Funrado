@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8285594750224520275}
   - component: {fileID: 2462785192688568246}
   - component: {fileID: 604331525186355906}
-  m_Layer: 0
+  - component: {fileID: 2014916601443852368}
+  m_Layer: 7
   m_Name: GrapeYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2014916601443852368
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469579336670467563}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.63336253, y: 0.5062599, z: 0.6215816}
+  m_Center: {x: -0.0001603663, y: 0.014140509, z: 0.055995464}
