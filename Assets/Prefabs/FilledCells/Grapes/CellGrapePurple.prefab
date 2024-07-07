@@ -58,10 +58,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2438379793682784535, guid: 99d0545d14bc340409c942311b7f6f46,
+        type: 3}
+      propertyPath: tongueLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7193551058902035484, guid: 99d0545d14bc340409c942311b7f6f46,
         type: 3}
       propertyPath: m_Name
-      value: GrapePurple
+      value: Grape
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -160,6 +165,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5419670034816658038}
+    - targetCorrespondingSourceObject: {fileID: 999609903471803921, guid: 66130180bbcab3a4c9f62d2e279c5378,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2083307839018836956}
   m_SourcePrefab: {fileID: 100100000, guid: 66130180bbcab3a4c9f62d2e279c5378, type: 3}
 --- !u!1 &6748188913504282173 stripped
 GameObject:
@@ -181,6 +190,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacedObject: {fileID: 4706877088953628238}
   BusyTestVisual: {fileID: 8374553638242435019}
+--- !u!95 &2083307839018836956
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748188913504282173}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a75d812e8e5da944fbe8092ddf40f261, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8374553638242435019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2612463614571177959, guid: 66130180bbcab3a4c9f62d2e279c5378,

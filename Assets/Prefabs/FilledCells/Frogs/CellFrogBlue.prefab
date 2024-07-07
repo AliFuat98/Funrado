@@ -92,6 +92,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -5648411606324384897}
+    - targetCorrespondingSourceObject: {fileID: 21374539647884952, guid: 72e4478413de7bc4db511d60678c7227,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3928815799461309479}
   m_SourcePrefab: {fileID: 100100000, guid: 72e4478413de7bc4db511d60678c7227, type: 3}
 --- !u!4 &1100578681259304176 stripped
 Transform:
@@ -235,6 +239,27 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!95 &3928815799461309479
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2357930350062789768}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a4879614497a89479f594c565797f34, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5098892060390370534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7363414521866180342, guid: 72e4478413de7bc4db511d60678c7227,
@@ -302,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 5915081697745028362, guid: 8f63d1a5f22ac794b87362278f3abc0b,
         type: 3}
       propertyPath: m_Name
-      value: FrogBlue
+      value: Frog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

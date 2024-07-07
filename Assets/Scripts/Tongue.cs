@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Tongue : MonoBehaviour {
@@ -7,8 +8,8 @@ public class Tongue : MonoBehaviour {
   public Direction LookDirection { get; set; }
   public Vector2Int LookDirectionVector { get; set; }
 
-  private bool isMovingForward = false;
-  private bool isMovingBackward = false;
+  public bool IsMovingForward { get; private set; } = false;
+  public bool IsMovingBackward { get; private set; } = false;
 
   private bool CanGoNextCell = false;
 
@@ -18,25 +19,29 @@ public class Tongue : MonoBehaviour {
     frog = GetComponentInParent<CellFrog>();
   }
 
+  public CellFrog GetFrog() {
+    return frog;
+  }
+
   public void StartMovingForward() {
-    isMovingForward = true;
-    isMovingBackward = false;
+    IsMovingForward = true;
+    IsMovingBackward = false;
   }
 
   public void StartMovingBackward() {
-    isMovingForward = false;
-    isMovingBackward = true;
+    IsMovingForward = false;
+    IsMovingBackward = true;
   }
 
   public void StopMoving() {
     // if stop moving function calling when the move is forward
     // then we can look at next cell in the trigger function
-    if (isMovingForward) {
+    if (IsMovingForward) {
       CanGoNextCell = true;
     }
 
-    isMovingForward = false;
-    isMovingBackward = false;
+    IsMovingForward = false;
+    IsMovingBackward = false;
   }
 
   private void OnTriggerStay(Collider other) {
@@ -57,19 +62,17 @@ public class Tongue : MonoBehaviour {
 
       // check => if the colors are the same || if the Cell is busy
       if (cellGrape.CellColor != frog.CellColor || cellGrape.IsCellBusy()) {
-        SoundManager.Instance.WrongMove();
         frog.CancelCollection();
         return;
       }
-
-      SoundManager.Instance.CollectGrape(0);
 
       // check => if the next cell is out of box
       var grid = GridManager.Instance.grid;
       var gridObject = grid.GetGridObject(cellGrape.X, cellGrape.Z, LookDirectionVector);
       if (gridObject == null) {
         // FROG CAN EAT ALL GRAPES ON THE WAY
-        frog.StartEating(cellGrape);
+        cellGrape.SetBusy(true);
+        StartCoroutine(StartEating(cellGrape));
         return;
       }
 
@@ -77,6 +80,11 @@ public class Tongue : MonoBehaviour {
       // look at next cell
       frog.ContinueCollecting(cellGrape);
     }
+  }
+
+  private IEnumerator StartEating(Cell cell) {
+    yield return new WaitForSeconds(1f);
+    frog.StartEating(cell);
   }
 
   public void CheckDirection(Collider other) {

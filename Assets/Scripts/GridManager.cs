@@ -51,6 +51,9 @@ public class GridManager : MonoBehaviour {
     for (int x = 0; x < gridArray.GetLength(0); x++) {
       for (int z = 0; z < gridArray.GetLength(1); z++) {
         gridArray[x, z].TopCell().ShowPlacedObject();
+
+        // test
+        gridArray[x, z].TopCell().SetBusy(false);
       }
     }
   }

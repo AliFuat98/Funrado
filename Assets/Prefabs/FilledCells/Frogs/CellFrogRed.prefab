@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4494172832178913942}
     m_Modifications:
+    - target: {fileID: 1180763252925171515, guid: 2f710fc392e0fcc4db3b10f10fe93614,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1193543453492449438, guid: 2f710fc392e0fcc4db3b10f10fe93614,
         type: 3}
       propertyPath: m_Name
@@ -147,7 +152,7 @@ PrefabInstance:
     - target: {fileID: 5878091081211585144, guid: 746bece521c2c3d478300622368fc0f9,
         type: 3}
       propertyPath: m_Name
-      value: FrogRed
+      value: Frog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -258,6 +263,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1060959992242094834}
+    - targetCorrespondingSourceObject: {fileID: 3772623624846334145, guid: bc29ceb74c20c5d478f95625128e593c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6863989175367996797}
   m_SourcePrefab: {fileID: 100100000, guid: bc29ceb74c20c5d478f95625128e593c, type: 3}
 --- !u!4 &4494172832178913942 stripped
 Transform:
@@ -401,6 +410,27 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!95 &6863989175367996797
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6188579124977827014}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a4879614497a89479f594c565797f34, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7725654382620565849 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 760610690490484062, guid: bc29ceb74c20c5d478f95625128e593c,

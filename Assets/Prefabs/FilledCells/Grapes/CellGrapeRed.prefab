@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1195521096858704102, guid: 812c73d1676557f4d9020341c2b169c0,
         type: 3}
       propertyPath: m_Name
-      value: GrapeRed
+      value: Grape
       objectReference: {fileID: 0}
     - target: {fileID: 2265711706999929035, guid: 812c73d1676557f4d9020341c2b169c0,
         type: 3}
@@ -62,6 +62,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057229505961184433, guid: 812c73d1676557f4d9020341c2b169c0,
+        type: 3}
+      propertyPath: tongueLayerMask.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -160,6 +165,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5394809990954372914}
+    - targetCorrespondingSourceObject: {fileID: 3772623624846334145, guid: bc29ceb74c20c5d478f95625128e593c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3702841928078573222}
   m_SourcePrefab: {fileID: 100100000, guid: bc29ceb74c20c5d478f95625128e593c, type: 3}
 --- !u!4 &2087893569740684723 stripped
 Transform:
@@ -193,3 +202,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacedObject: {fileID: 1854469263075246042}
   BusyTestVisual: {fileID: 5300802697778339452}
+--- !u!95 &3702841928078573222
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594290506840146915}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a75d812e8e5da944fbe8092ddf40f261, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

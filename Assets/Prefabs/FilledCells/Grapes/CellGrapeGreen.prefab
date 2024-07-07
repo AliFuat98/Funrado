@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1974461381463427693}
     m_Modifications:
+    - target: {fileID: 679053679194788700, guid: 0fe59baa52d95e446997337696a0769e,
+        type: 3}
+      propertyPath: tongueLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 3692603806764939665, guid: 0fe59baa52d95e446997337696a0769e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 7051316015251168229, guid: 0fe59baa52d95e446997337696a0769e,
         type: 3}
       propertyPath: m_Name
-      value: GrapeGreen
+      value: Grape
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -160,6 +165,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 845310435614001778}
+    - targetCorrespondingSourceObject: {fileID: 3276070635645024281, guid: 93dc4d39835defa4e87130872c28da48,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5523319286885493756}
   m_SourcePrefab: {fileID: 100100000, guid: 93dc4d39835defa4e87130872c28da48, type: 3}
 --- !u!1 &14972693768694566 stripped
 GameObject:
@@ -193,3 +202,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacedObject: {fileID: 4320354581708279762}
   BusyTestVisual: {fileID: 14972693768694566}
+--- !u!95 &5523319286885493756
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8511092733436864007}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a75d812e8e5da944fbe8092ddf40f261, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

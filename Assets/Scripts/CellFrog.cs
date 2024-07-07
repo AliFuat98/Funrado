@@ -7,10 +7,12 @@ public class CellFrog : Cell {
   private readonly Stack<Cell> visitedCellStack = new();
 
   private Tongue tongue;
+  private Animator animator;
 
   private void Start() {
     drawLine = GetComponent<DrawLine>();
     tongue = GetComponentInChildren<Tongue>();
+    animator = GetComponent<Animator>();
     ResetTongueDirection();
   }
 
@@ -30,7 +32,7 @@ public class CellFrog : Cell {
     Cell topCell = gridObject.TopCell();
 
     if (topCell is CellFrog) {
-      ContinueCollecting(topCell);
+      animator.SetTrigger("Clicked");
       return;
     }
 
@@ -38,13 +40,17 @@ public class CellFrog : Cell {
   }
 
   public void ContinueCollecting(Cell lastCell) {
-    visitedCellStack.Push(lastCell);
-    lastCell.SetBusy(true);
-    if (lastCell is CellGrape) {
-      lastCell.GetComponentInChildren<GrapeMovement>().SetFrog(this);
+    var grid = GridManager.Instance.grid;
+
+    if (lastCell == null) {
+      // getting from trigger animation event
+      var gridObject = grid.GetGridObject(X, Z);
+      lastCell = gridObject.TopCell();
+      animator.SetBool("IsCollecting", true);
     }
 
-    var grid = GridManager.Instance.grid;
+    visitedCellStack.Push(lastCell);
+    lastCell.SetBusy(true);
 
     var nextGridObject = grid.GetGridObject(lastCell.X, lastCell.Z, tongue.LookDirectionVector);
     float offset = .2f;
@@ -56,9 +62,6 @@ public class CellFrog : Cell {
     SoundManager.Instance.GetBackTongue();
     visitedCellStack.Push(lastCell);
     lastCell.SetBusy(true);
-    if (lastCell is CellGrape) {
-      lastCell.GetComponentInChildren<GrapeMovement>().SetFrog(this);
-    }
 
     // get back the tongue
     drawLine.UndoAllPoints();
@@ -70,8 +73,7 @@ public class CellFrog : Cell {
   public void MoveNextGrape() {
     var cell = visitedCellStack.Pop();
     if (cell is CellGrape) {
-      cell.GetComponentInChildren<GrapeMovement>().MoveToFrog(visitedCellStack.ToArray());
-      cell.GetPlacedObject().transform.SetParent(null);
+      cell.GetComponentInChildren<Grape>().MoveToFrog(visitedCellStack.ToArray());
     }
   }
 
@@ -80,6 +82,7 @@ public class CellFrog : Cell {
     foreach (var cell in visitedCellStack) {
       cell.SetBusy(false);
     }
+    visitedCellStack.Clear();
 
     // release frog
     SetBusy(false);
@@ -89,6 +92,9 @@ public class CellFrog : Cell {
 
     // delete the tongue line
     drawLine.ClearTheLine();
+
+    // reset animation
+    animator.SetBool("IsCollecting", false);
   }
 
   private void ResetTongueDirection() {

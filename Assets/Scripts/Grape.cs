@@ -1,22 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
-public class GrapeMovement : MonoBehaviour {
+public class Grape : MonoBehaviour {
   public LayerMask grapeLayerMask;
+  public LayerMask tongueLayerMask;
   private Cell[] cells;
   private float duration = 1.0f;
   private bool IsMoving = false;
   private CellFrog frog = null;
+  private CellGrape cellGrape;
+  private Animator animator;
 
   private void Start() {
     duration = GameManager.Instance.GetDuration();
+    animator = GetComponentInParent<Animator>();
+    cellGrape = GetComponentInParent<CellGrape>();
   }
 
-  public void SetFrog(CellFrog frog) {
-    this.frog = frog;
+  private void DisableAnimator() {
+    animator.enabled = false;
   }
 
   public void MoveToFrog(Cell[] cells) {
+    DisableAnimator();
+    cellGrape.GetPlacedObject().transform.SetParent(null);
+
     this.cells = cells;
 
     StartCoroutine(MoveAlongPoints());
@@ -45,10 +53,34 @@ public class GrapeMovement : MonoBehaviour {
     if (IsMoving) {
       return;
     }
+
+    // a grape touches this grape
     if ((grapeLayerMask.value & (1 << other.gameObject.layer)) != 0) {
-      var otherGrape = other.GetComponent<GrapeMovement>();
-      otherGrape.frog = frog;
       frog.MoveNextGrape();
+    }
+
+    // a tongue touches this grape (only voice and animations)
+    if ((tongueLayerMask.value & (1 << other.gameObject.layer)) != 0) {
+      var tongue = other.GetComponent<Tongue>();
+
+      if (!tongue.IsMovingForward) {
+        // do nothing
+        return;
+      }
+
+      if (cellGrape.IsCellBusy()) {
+        SoundManager.Instance.WrongMove();
+        return;
+      }
+
+      if (cellGrape.CellColor == tongue.GetFrog().CellColor) {
+        frog = tongue.GetFrog();
+        animator.SetTrigger("CorrectTouched");
+        SoundManager.Instance.CollectGrape(0);
+      } else {
+        animator.SetTrigger("WrongTouched");
+        SoundManager.Instance.WrongMove();
+      }
     }
   }
 }
