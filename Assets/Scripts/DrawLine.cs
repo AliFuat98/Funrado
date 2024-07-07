@@ -8,6 +8,7 @@ public class DrawLine : MonoBehaviour {
   [SerializeField] private Tongue tongue;
 
   [SerializeField] private Transform startPoint;
+  private float duration;
 
   void Start() {
     lineRenderer = GetComponent<LineRenderer>();
@@ -21,6 +22,8 @@ public class DrawLine : MonoBehaviour {
     };
 
     lineRenderer.positionCount = 1;
+
+    duration = GameManager.Instance.GetDuration();
   }
 
   public void ClearTheLine() {
@@ -40,7 +43,6 @@ public class DrawLine : MonoBehaviour {
   private IEnumerator DrawLineCoroutine() {
     Vector3 startPoint = points[points.Count - 2];
     Vector3 endPoint = points[points.Count - 1];
-    float duration = 1.0f; // Çizginin tamamlanma süresi
     float elapsedTime = 0;
 
     while (elapsedTime < duration) {
@@ -69,7 +71,6 @@ public class DrawLine : MonoBehaviour {
     while (points.Count > 1) {
       Vector3 startPoint = points[points.Count - 2];
       Vector3 endPoint = points[points.Count - 1];
-      float duration = 1.0f; // line dissappear time
       float elapsedTime = 0;
 
       while (elapsedTime < duration) {

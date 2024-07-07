@@ -57,9 +57,12 @@ public class Tongue : MonoBehaviour {
 
       // check => if the colors are the same || if the Cell is busy
       if (cellGrape.CellColor != frog.CellColor || cellGrape.IsCellBusy()) {
+        SoundManager.Instance.WrongMove();
         frog.CancelCollection();
         return;
       }
+
+      SoundManager.Instance.CollectGrape(0);
 
       // check => if the next cell is out of box
       var grid = GridManager.Instance.grid;
@@ -83,6 +86,7 @@ public class Tongue : MonoBehaviour {
 
       // check => if the colors are the same || if the Cell is busy
       if (cellDirection.CellColor != frog.CellColor || cellDirection.IsCellBusy()) {
+        SoundManager.Instance.WrongMove();
         frog.CancelCollection();
         return;
       }
@@ -96,6 +100,7 @@ public class Tongue : MonoBehaviour {
       var gridObject = grid.GetGridObject(cellDirection.X, cellDirection.Z, LookDirectionVector);
       if (gridObject == null) {
         // the direction points to outside of the box cancel it
+        SoundManager.Instance.WrongMove();
         frog.CancelCollection();
         return;
       }

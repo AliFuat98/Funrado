@@ -1,7 +1,18 @@
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+  public static GameManager Instance { get; private set; }
+
   [SerializeField] private LayerMask mouseColliderLayerMask = new LayerMask();
+  [SerializeField] private float duration = 1f;
+
+  private void Awake() {
+    Instance = this;
+  }
+
+  public float GetDuration() {
+    return duration;
+  }
 
   // Start is called before the first frame update
   void Start() {

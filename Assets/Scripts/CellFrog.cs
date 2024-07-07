@@ -30,21 +30,11 @@ public class CellFrog : Cell {
     Cell topCell = gridObject.TopCell();
 
     if (topCell is CellFrog) {
-      // allocate the cell
-      SetBusy(true);
-
-      CellFrog frog = gridObject.TopCell() as CellFrog;
-      visitedCellStack.Push(frog);
-
-      var nextGridObject = grid.GetGridObject(X, Z, tongue.LookDirectionVector);
-
-      float offset = .2f;
-      frog.DrawNextLine(nextGridObject.TopCellPosition() + new Vector3(0, offset, 0));
-
+      ContinueCollecting(topCell);
       return;
     }
 
-    Debug.Log("clicked other cells");
+    Debug.Log("clicked wrong cell");
   }
 
   public void ContinueCollecting(Cell lastCell) {
@@ -52,7 +42,6 @@ public class CellFrog : Cell {
     lastCell.SetBusy(true);
     if (lastCell is CellGrape) {
       lastCell.GetComponentInChildren<GrapeMovement>().SetFrog(this);
-      SoundManager.Instance.CollectGrape(0);
     }
 
     var grid = GridManager.Instance.grid;
@@ -64,6 +53,7 @@ public class CellFrog : Cell {
 
   // if the player's move is correct then this function will be called
   public void StartEating(Cell lastCell) {
+    SoundManager.Instance.GetBackTongue();
     visitedCellStack.Push(lastCell);
     lastCell.SetBusy(true);
     if (lastCell is CellGrape) {

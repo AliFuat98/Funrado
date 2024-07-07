@@ -8,6 +8,10 @@ public class GrapeMovement : MonoBehaviour {
   private bool IsMoving = false;
   private CellFrog frog = null;
 
+  private void Start() {
+    duration = GameManager.Instance.GetDuration();
+  }
+
   public void SetFrog(CellFrog frog) {
     this.frog = frog;
   }

@@ -155,6 +155,7 @@ MonoBehaviour:
   mouseColliderLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  duration: 0.5
 --- !u!4 &111828519
 Transform:
   m_ObjectHideFlags: 0
@@ -456,7 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: {fileID: 11400000, guid: 110162b64daaeb7479cbfac3109eb68b, type: 2}
   gridWidth: 3
-  cellSize: 1.5
+  cellSize: 1.1
 --- !u!4 &534060046
 Transform:
   m_ObjectHideFlags: 0
@@ -582,7 +583,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClipSO: {fileID: 11400000, guid: 0c2d633af64dbf9409c2e5bbe0ebb56e, type: 2}
-  source: {fileID: 0}
 --- !u!4 &1816775607
 Transform:
   m_ObjectHideFlags: 0
