@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Tongue : MonoBehaviour {
   public LayerMask grapeLayerMask;
+  public LayerMask directionLayerMask;
 
   private bool isMovingForward = false;
   private bool isMovingBackward = false;
@@ -41,25 +42,23 @@ public class Tongue : MonoBehaviour {
     }
     CanGoNextCell = false;
 
+    CheckGrape(other);
+    CheckDirection(other);
+  }
+
+  public void CheckGrape(Collider other) {
     if ((grapeLayerMask.value & (1 << other.gameObject.layer)) != 0) {
       // touched a grape in here
 
       CellGrape cellGrape = other.GetComponentInParent<CellGrape>();
 
-      // check => colors are the same
-      // check ==> Cell is busy
+      // check => if the colors are the same || if the Cell is busy
       if (cellGrape.CellColor != frog.CellColor || cellGrape.IsCellBusy()) {
-        // play wrong grape animation
-        // reset the tongue verticies
-        // release the busy cells
-
-        Debug.Log("color is not the same");
         frog.CancelEating();
         return;
       }
 
-      // check => next cell is out of box
-
+      // check => if the next cell is out of box
       var grid = GridManager.Instance.grid;
       var gridObject = grid.GetGridObject(cellGrape.X, cellGrape.Z, frog.LookDirectionVector);
       if (gridObject == null) {
@@ -71,6 +70,12 @@ public class Tongue : MonoBehaviour {
       // there are other cell to continue the process
       // look at next cell
       frog.ContinueEating(cellGrape);
+    }
+  }
+
+  public void CheckDirection(Collider other) {
+    if ((directionLayerMask.value & (1 << other.gameObject.layer)) != 0) {
+      Debug.Log("collide with a direction");
     }
   }
 }

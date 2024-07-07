@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa31c68e3aa5b447a336d0cbb3ffa80, type: 3}
   m_Name: CellDirectionBlueLeftSO
   m_EditorClassIdentifier: 
-  nameString: CellFrogBlue
-  prefab: {fileID: 3437644357715222240, guid: 72e4478413de7bc4db511d60678c7227, type: 3}
+  nameString: CellDirectionBlueLeft
+  prefab: {fileID: 8690225016562048676, guid: 9b77d6f48b7042d48aca92b6730c55b2, type: 3}
   cellColor: 0
   direction: 2

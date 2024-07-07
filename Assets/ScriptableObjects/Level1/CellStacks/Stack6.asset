@@ -15,3 +15,4 @@ MonoBehaviour:
   CellSOList:
   - {fileID: 11400000, guid: afa8149a871c6c3469e4358002b2ae19, type: 2}
   - {fileID: 11400000, guid: afa8149a871c6c3469e4358002b2ae19, type: 2}
+  - {fileID: 11400000, guid: 03a110ffc3fc2d04b9f414b4816da9b3, type: 2}
