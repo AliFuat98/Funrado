@@ -190,6 +190,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacedObject: {fileID: 4706877088953628238}
   BusyTestVisual: {fileID: 8374553638242435019}
+  placedObjectLayerMask:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!95 &2083307839018836956
 Animator:
   serializedVersion: 5

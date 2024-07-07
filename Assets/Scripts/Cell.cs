@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Cell : MonoBehaviour {
@@ -14,6 +15,12 @@ public class Cell : MonoBehaviour {
 
   [SerializeField] protected GameObject BusyTestVisual;
 
+  protected Animator animator;
+
+  private void Start() {
+    animator = GetComponent<Animator>();
+  }
+
   public void SetVar(int x, int z, int k, CellColor color, Direction direction) {
     X = x; Z = z; K = k; CellColor = color; LookDirection = direction;
     RotatePlacedObject();
@@ -21,12 +28,45 @@ public class Cell : MonoBehaviour {
     HidePlacedObject();
   }
 
+  public void UnparentPlacedObject() {
+    PlacedObject.transform.SetParent(null);
+  }
+
   public GameObject GetPlacedObject() {
     return PlacedObject;
   }
 
-  public void ShowPlacedObject() {
+  public void ShowPlacedObject(bool withEffect = false) {
+    SetBusy(false);
+    if (withEffect) {
+      StartCoroutine(ScaleUpPlacedObject());
+    } else {
+      PlacedObject.SetActive(true);
+    }
+  }
+
+  private IEnumerator ScaleUpPlacedObject() {
     PlacedObject.SetActive(true);
+    animator.enabled = false;
+
+    Vector3 finalocalScale = PlacedObject.transform.localScale;
+    // get the new placed object
+    Vector3 initialScale = Vector3.zero;
+    float elapsedTime = 0f;
+    float time = GameManager.Instance.GetDuration() / 2;
+
+    while (elapsedTime < time) {
+      float t = elapsedTime / time;
+      //t = t * t * (3f - 2f * t);
+      PlacedObject.transform.localScale = Vector3.Lerp(initialScale, finalocalScale, t);
+      elapsedTime += Time.deltaTime;
+      yield return null;
+    }
+
+    PlacedObject.transform.localScale = finalocalScale;
+
+    animator.enabled = true;
+    yield return null;
   }
 
   protected void HidePlacedObject() {

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,6 @@ public class CellFrog : Cell {
   private readonly Stack<Cell> visitedCellStack = new();
 
   private Tongue tongue;
-  private Animator animator;
 
   public Cell NextVisitedCell { get; private set; }
 
@@ -72,8 +72,21 @@ public class CellFrog : Cell {
     // get back the tongue
     drawLine.UndoAllPoints();
 
+    // destroy the cells
+    StartCoroutine(GetNextCells());
+
     // move a grape
     MoveNextGrape();
+  }
+
+  private IEnumerator GetNextCells() {
+    float duration = GameManager.Instance.GetDuration();
+
+    var visitedList = visitedCellStack.ToArray();
+    for (int i = 0; i <= visitedList.Length - 1; i++) {
+      yield return new WaitForSeconds(duration);
+      GridManager.Instance.GetNextCell(visitedList[i].X, visitedList[i].Z);
+    }
   }
 
   public void MoveNextGrape() {

@@ -238,6 +238,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacedObject: {fileID: 3680936191924866367}
   BusyTestVisual: {fileID: 9054178910836433644}
+  placedObjectLayerMask:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!4 &8091146274340790535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3003396024461304844, guid: 66130180bbcab3a4c9f62d2e279c5378,

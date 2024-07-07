@@ -15,8 +15,6 @@ public class Tongue : MonoBehaviour {
 
   private CellFrog frog;
 
-  private Cell nextCandidateCell;
-
   private void Start() {
     frog = GetComponentInParent<CellFrog>();
   }
@@ -84,10 +82,6 @@ public class Tongue : MonoBehaviour {
         return;
       }
 
-      // store this cell to check if it is busy or not
-      var nextGridObject = grid.GetGridObject(cellGrape.X, cellGrape.Z, LookDirectionVector);
-      nextCandidateCell = nextGridObject.TopCell();
-
       // there are other cell to continue the process
       // look at next cell
       frog.ContinueCollecting(cellGrape);
@@ -124,10 +118,6 @@ public class Tongue : MonoBehaviour {
         frog.CancelCollection();
         return;
       }
-
-      // store this cell to check if it is busy or not
-      var nextGridObject = grid.GetGridObject(cellDirection.X, cellDirection.Z, LookDirectionVector);
-      nextCandidateCell = nextGridObject.TopCell();
 
       frog.ContinueCollecting(cellDirection);
     }

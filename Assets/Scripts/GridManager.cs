@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,11 +52,36 @@ public class GridManager : MonoBehaviour {
     for (int x = 0; x < gridArray.GetLength(0); x++) {
       for (int z = 0; z < gridArray.GetLength(1); z++) {
         gridArray[x, z].TopCell().ShowPlacedObject();
-
-        // test
-        gridArray[x, z].TopCell().SetBusy(false);
       }
     }
+  }
+
+  public void GetNextCell(int x, int z) {
+    var gridObject = grid.GetGridObject(x, z);
+
+    var topcellToDestroy = gridObject.TopCell();
+    gridObject.Pop();
+    var newTopCell = gridObject.TopCell();
+
+    StartCoroutine(NextCell(topcellToDestroy, newTopCell));
+  }
+
+  private IEnumerator NextCell(Cell topcellToDestroy, Cell newTopCell) {
+    Vector3 initialScale = topcellToDestroy.transform.localScale;
+    float elapsedTime = 0f;
+    float time = GameManager.Instance.GetDuration() / 2;
+
+    while (elapsedTime < time) {
+      float t = elapsedTime / time;
+      //t = t * t * (3f - 2f * t);
+      topcellToDestroy.transform.localScale = Vector3.Lerp(initialScale, Vector3.zero, t);
+      elapsedTime += Time.deltaTime;
+      yield return null;
+    }
+
+    Destroy(topcellToDestroy.gameObject);
+
+    newTopCell.ShowPlacedObject(withEffect: true);
   }
 
   // ** transform is a container for cell **
@@ -68,12 +94,8 @@ public class GridManager : MonoBehaviour {
 
     public Transform Pop() {
       var popedCellTransform = stack.Pop();
-      Destroy(popedCellTransform.gameObject);
 
       if (stack.Count > 0) {
-        var newTopCell = stack.Peek();
-        newTopCell.GetComponent<Cell>().ShowPlacedObject();
-
         return popedCellTransform;
       }
       return null;

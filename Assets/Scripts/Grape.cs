@@ -23,7 +23,7 @@ public class Grape : MonoBehaviour {
 
   public void MoveToFrog(Cell[] cells) {
     DisableAnimator();
-    cellGrape.GetPlacedObject().transform.SetParent(null);
+    cellGrape.UnparentPlacedObject();
 
     this.cells = cells;
 
