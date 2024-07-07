@@ -34,6 +34,8 @@ public class CellFrog : Cell {
     Cell topCell = gridObject.TopCell();
 
     if (topCell is CellFrog) {
+      topCell.SetBusy(true);
+      GameManager.Instance.DecreaseMove();
       animator.SetTrigger("Clicked");
       return;
     }

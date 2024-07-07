@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour {
   public static GridManager Instance { get; private set; }
-
-  [SerializeField] private LevelSO currentLevel;
-
+  private LevelSO currentLevel;
   public Grid<GridObject> grid { get; private set; }
 
   private int gridWidth;
@@ -18,7 +16,8 @@ public class GridManager : MonoBehaviour {
   }
 
   private void Start() {
-    gridHeight = currentLevel.width;
+    currentLevel = GameManager.Instance.GetLevelSO();
+    gridWidth = currentLevel.width;
     gridHeight = currentLevel.width;
     grid = new Grid<GridObject>(gridWidth, gridHeight, cellSize, new Vector3(0, 0, 0), (Grid<GridObject> g, int x, int z) => new GridObject());
 
@@ -124,9 +123,5 @@ public class GridManager : MonoBehaviour {
     public int StackCount() {
       return stack.Count;
     }
-  }
-
-  public int GetCurrentLevelMoveCount() {
-    return currentLevel.levelMoveCount;
   }
 }
