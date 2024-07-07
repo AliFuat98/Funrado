@@ -59,6 +59,23 @@ public class GridManager : MonoBehaviour {
     }
   }
 
+  public void CheckGameIsOver() {
+    bool frogFound = false;
+    GridObject[,] gridArray = grid.GetGridArray();
+    for (int x = 0; x < gridArray.GetLength(0); x++) {
+      for (int z = 0; z < gridArray.GetLength(1); z++) {
+        var topcell = gridArray[x, z].TopCell();
+        if (topcell != null && topcell is CellFrog) {
+          frogFound = true;
+        }
+      }
+    }
+
+    if (!frogFound) {
+      GameManager.Instance.GameOver(win: true);
+    }
+  }
+
   public void GetNextCell(int x, int z) {
     var gridObject = grid.GetGridObject(x, z);
 
@@ -83,6 +100,8 @@ public class GridManager : MonoBehaviour {
     }
 
     Destroy(topcellToDestroy.gameObject);
+
+    CheckGameIsOver();
 
     if (newTopCell != null) {
       newTopCell.ShowPlacedObject(withEffect: true);

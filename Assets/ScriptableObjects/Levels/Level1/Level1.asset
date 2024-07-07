@@ -29,6 +29,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 47656a83d772b59499a2a14c91e33c26, type: 2}
   - {fileID: 11400000, guid: a56ef644a58b92b4e8a7d35166449082, type: 2}
   - {fileID: 11400000, guid: 63d93fbab31c2124b890e0b0f35d971c, type: 2}
-  levelMoveCount: 15
+  levelMoveCount: 2
   width: 4
   gameLevel: 1

@@ -217,6 +217,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 838291058991211342}
+    - targetCorrespondingSourceObject: {fileID: 999609903471803921, guid: 66130180bbcab3a4c9f62d2e279c5378,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1827162542934291675}
   m_SourcePrefab: {fileID: 100100000, guid: 66130180bbcab3a4c9f62d2e279c5378, type: 3}
 --- !u!1 &6068848464807000858 stripped
 GameObject:
@@ -238,9 +242,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacedObject: {fileID: 3680936191924866367}
   BusyTestVisual: {fileID: 9054178910836433644}
-  placedObjectLayerMask:
-    serializedVersion: 2
-    m_Bits: 384
+--- !u!95 &1827162542934291675
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068848464807000858}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &8091146274340790535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3003396024461304844, guid: 66130180bbcab3a4c9f62d2e279c5378,
