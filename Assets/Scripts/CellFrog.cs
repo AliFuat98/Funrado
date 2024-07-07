@@ -18,7 +18,7 @@ public class CellFrog : Cell {
     drawLine.AddNewPointToDraw(nextPoint);
   }
 
-  public override void StartEating() {
+  public override void StartCollecting() {
     if (IsCellBusy()) {
       return;
     }
@@ -47,11 +47,12 @@ public class CellFrog : Cell {
     Debug.Log("clicked other cells");
   }
 
-  public void ContinueEating(Cell lastCell) {
+  public void ContinueCollecting(Cell lastCell) {
     visitedCellStack.Push(lastCell);
     lastCell.SetBusy(true);
     if (lastCell is CellGrape) {
       lastCell.GetComponentInChildren<GrapeMovement>().SetFrog(this);
+      SoundManager.Instance.CollectGrape(0);
     }
 
     var grid = GridManager.Instance.grid;
@@ -61,9 +62,8 @@ public class CellFrog : Cell {
     DrawNextLine(nextGridObject.TopCellPosition() + new Vector3(0, offset, 0));
   }
 
-  // Finish forward eating with tongue
   // if the player's move is correct then this function will be called
-  public void FinishEating(Cell lastCell) {
+  public void StartEating(Cell lastCell) {
     visitedCellStack.Push(lastCell);
     lastCell.SetBusy(true);
     if (lastCell is CellGrape) {
@@ -85,7 +85,7 @@ public class CellFrog : Cell {
     }
   }
 
-  public void CancelEating() {
+  public void CancelCollection() {
     // relase visited cells
     foreach (var cell in visitedCellStack) {
       cell.SetBusy(false);

@@ -57,7 +57,7 @@ public class Tongue : MonoBehaviour {
 
       // check => if the colors are the same || if the Cell is busy
       if (cellGrape.CellColor != frog.CellColor || cellGrape.IsCellBusy()) {
-        frog.CancelEating();
+        frog.CancelCollection();
         return;
       }
 
@@ -66,13 +66,13 @@ public class Tongue : MonoBehaviour {
       var gridObject = grid.GetGridObject(cellGrape.X, cellGrape.Z, LookDirectionVector);
       if (gridObject == null) {
         // FROG CAN EAT ALL GRAPES ON THE WAY
-        frog.FinishEating(cellGrape);
+        frog.StartEating(cellGrape);
         return;
       }
 
       // there are other cell to continue the process
       // look at next cell
-      frog.ContinueEating(cellGrape);
+      frog.ContinueCollecting(cellGrape);
     }
   }
 
@@ -83,7 +83,7 @@ public class Tongue : MonoBehaviour {
 
       // check => if the colors are the same || if the Cell is busy
       if (cellDirection.CellColor != frog.CellColor || cellDirection.IsCellBusy()) {
-        frog.CancelEating();
+        frog.CancelCollection();
         return;
       }
 
@@ -96,11 +96,11 @@ public class Tongue : MonoBehaviour {
       var gridObject = grid.GetGridObject(cellDirection.X, cellDirection.Z, LookDirectionVector);
       if (gridObject == null) {
         // the direction points to outside of the box cancel it
-        frog.CancelEating();
+        frog.CancelCollection();
         return;
       }
 
-      frog.ContinueEating(cellDirection);
+      frog.ContinueCollecting(cellDirection);
     }
   }
 }

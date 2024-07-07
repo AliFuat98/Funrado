@@ -33,7 +33,7 @@ public class Cell : MonoBehaviour {
     PlacedObject.SetActive(false);
   }
 
-  public virtual void StartEating() {
+  public virtual void StartCollecting() {
   }
 
   public void SetBusy(bool busy) {

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
       if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask)) {
         var cell = raycastHit.transform.GetComponent<Cell>();
-        cell.StartEating();
+        cell.StartCollecting();
       }
     }
   }

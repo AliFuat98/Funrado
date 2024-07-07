@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09015f5305fb81f41a8e2a012c0d7c5c, type: 3}
+  m_Name: AudioClipSO
+  m_EditorClassIdentifier: 
+  reward:
+  - {fileID: 8300000, guid: b46a12308f2fe5d4082b8b418e1f4d40, type: 3}
+  collectGrape:
+  - {fileID: 8300000, guid: 2d6c5b6b0fb1b7a42ab0e6f2200ea687, type: 3}
+  - {fileID: 8300000, guid: 00a73089965cbbf46a4e9992be8db288, type: 3}
+  - {fileID: 8300000, guid: 206bddca01972944fabbbd44261205d2, type: 3}
+  wrongMove:
+  - {fileID: 8300000, guid: d60d1388a9e536b448d1dcd118316de3, type: 3}
+  getBackTongue:
+  - {fileID: 8300000, guid: 492ab9a6e2cf97b4d9e970308146a4ed, type: 3}
