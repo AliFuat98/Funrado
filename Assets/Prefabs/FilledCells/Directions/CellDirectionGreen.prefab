@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1828358720501079006}
   - component: {fileID: 10398292294193423}
   - component: {fileID: 8239391019618614596}
-  m_Layer: 0
+  - component: {fileID: 8605844956140656152}
+  m_Layer: 8
   m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +84,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8605844956140656152
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200889980159204831}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.050000004, y: 0.082281105, z: 0.020000007}
+  m_Center: {x: 0, y: -0.018859468, z: 0}
 --- !u!1 &9108866651369479281
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CellDirectionGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276070635645024281, guid: 93dc4d39835defa4e87130872c28da48,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4615410578675389555, guid: 93dc4d39835defa4e87130872c28da48,
         type: 3}

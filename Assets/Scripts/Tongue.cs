@@ -4,6 +4,9 @@ public class Tongue : MonoBehaviour {
   public LayerMask grapeLayerMask;
   public LayerMask directionLayerMask;
 
+  public Direction LookDirection { get; set; }
+  public Vector2Int LookDirectionVector { get; set; }
+
   private bool isMovingForward = false;
   private bool isMovingBackward = false;
 
@@ -60,7 +63,7 @@ public class Tongue : MonoBehaviour {
 
       // check => if the next cell is out of box
       var grid = GridManager.Instance.grid;
-      var gridObject = grid.GetGridObject(cellGrape.X, cellGrape.Z, frog.LookDirectionVector);
+      var gridObject = grid.GetGridObject(cellGrape.X, cellGrape.Z, LookDirectionVector);
       if (gridObject == null) {
         // FROG CAN EAT ALL GRAPES ON THE WAY
         frog.FinishEating(cellGrape);
@@ -75,7 +78,29 @@ public class Tongue : MonoBehaviour {
 
   public void CheckDirection(Collider other) {
     if ((directionLayerMask.value & (1 << other.gameObject.layer)) != 0) {
-      Debug.Log("collide with a direction");
+      // touched a direction in here
+      CellDirection cellDirection = other.GetComponentInParent<CellDirection>();
+
+      // check => if the colors are the same || if the Cell is busy
+      if (cellDirection.CellColor != frog.CellColor || cellDirection.IsCellBusy()) {
+        frog.CancelEating();
+        return;
+      }
+
+      // change frog look direction.
+      LookDirection = cellDirection.LookDirection;
+      LookDirectionVector = cellDirection.LookDirectionVector;
+
+      // check => if the next cell is out of box (this cannot be happen if we design the map)
+      var grid = GridManager.Instance.grid;
+      var gridObject = grid.GetGridObject(cellDirection.X, cellDirection.Z, LookDirectionVector);
+      if (gridObject == null) {
+        // the direction points to outside of the box cancel it
+        frog.CancelEating();
+        return;
+      }
+
+      frog.ContinueEating(cellDirection);
     }
   }
 }

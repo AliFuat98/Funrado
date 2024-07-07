@@ -6,8 +6,12 @@ public class CellFrog : Cell {
 
   private readonly Stack<Cell> visitedCellStack = new();
 
+  private Tongue tongue;
+
   private void Start() {
     drawLine = GetComponent<DrawLine>();
+    tongue = GetComponentInChildren<Tongue>();
+    ResetTongueDirection();
   }
 
   private void DrawNextLine(Vector3 nextPoint) {
@@ -32,7 +36,7 @@ public class CellFrog : Cell {
       CellFrog frog = gridObject.TopCell() as CellFrog;
       visitedCellStack.Push(frog);
 
-      var nextGridObject = grid.GetGridObject(X, Z, LookDirectionVector);
+      var nextGridObject = grid.GetGridObject(X, Z, tongue.LookDirectionVector);
 
       float offset = .2f;
       frog.DrawNextLine(nextGridObject.TopCellPosition() + new Vector3(0, offset, 0));
@@ -52,7 +56,7 @@ public class CellFrog : Cell {
 
     var grid = GridManager.Instance.grid;
 
-    var nextGridObject = grid.GetGridObject(lastCell.X, lastCell.Z, LookDirectionVector);
+    var nextGridObject = grid.GetGridObject(lastCell.X, lastCell.Z, tongue.LookDirectionVector);
     float offset = .2f;
     DrawNextLine(nextGridObject.TopCellPosition() + new Vector3(0, offset, 0));
   }
@@ -90,7 +94,15 @@ public class CellFrog : Cell {
     // release frog
     SetBusy(false);
 
+    // reset tongue direction
+    ResetTongueDirection();
+
     // delete the tongue line
     drawLine.ClearTheLine();
+  }
+
+  private void ResetTongueDirection() {
+    tongue.LookDirection = LookDirection;
+    tongue.LookDirectionVector = LookDirectionVector;
   }
 }

@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193543453492449438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -149,3 +149,6 @@ MonoBehaviour:
   grapeLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  directionLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
