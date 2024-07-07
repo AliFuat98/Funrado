@@ -9,6 +9,8 @@ public class CellFrog : Cell {
   private Tongue tongue;
   private Animator animator;
 
+  public Cell NextVisitedCell { get; private set; }
+
   private void Start() {
     drawLine = GetComponent<DrawLine>();
     tongue = GetComponentInChildren<Tongue>();
@@ -54,6 +56,10 @@ public class CellFrog : Cell {
 
     var nextGridObject = grid.GetGridObject(lastCell.X, lastCell.Z, tongue.LookDirectionVector);
     float offset = .2f;
+
+    // store this to check if the next cell is busy in the tongue scripts
+    NextVisitedCell = nextGridObject.TopCell();
+
     DrawNextLine(nextGridObject.TopCellPosition() + new Vector3(0, offset, 0));
   }
 
