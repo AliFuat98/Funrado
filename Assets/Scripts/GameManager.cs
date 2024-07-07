@@ -1,3 +1,4 @@
+using System.Xml.Schema;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -5,7 +6,7 @@ public class GameManager : MonoBehaviour {
 
   [SerializeField] private LayerMask mouseColliderLayerMask = new LayerMask();
   [SerializeField] private float duration = 1f;
-
+  private int totalMoveCount;
   private void Awake() {
     Instance = this;
   }
@@ -14,11 +15,10 @@ public class GameManager : MonoBehaviour {
     return duration;
   }
 
-  // Start is called before the first frame update
   void Start() {
+    totalMoveCount = GridManager.Instance.GetCurrentLevelMoveCount();
   }
 
-  // Update is called once per frame
   void Update() {
     if (Input.GetKeyDown(KeyCode.Mouse0)) {
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

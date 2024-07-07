@@ -57,6 +57,12 @@ public class CellFrog : Cell {
     var nextGridObject = grid.GetGridObject(lastCell.X, lastCell.Z, tongue.LookDirectionVector);
     float offset = .2f;
 
+    if (nextGridObject == null) {
+      // then frog is looking out of box
+      CancelCollection();
+      return;
+    }
+
     // store this to check if the next cell is busy in the tongue scripts
     NextVisitedCell = nextGridObject.TopCell();
 
@@ -102,6 +108,7 @@ public class CellFrog : Cell {
       cell.SetBusy(false);
     }
     visitedCellStack.Clear();
+    NextVisitedCell = null;
 
     // release frog
     SetBusy(false);

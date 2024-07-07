@@ -43,7 +43,7 @@ public class Tongue : MonoBehaviour {
     IsMovingForward = false;
     IsMovingBackward = false;
 
-    if (frog.NextVisitedCell.IsCellBusy()) {
+    if (frog.NextVisitedCell.IsCellBusy() || frog.NextVisitedCell is CellFrog) {
       frog.CancelCollection();
       CanGoNextCell = false;
       SoundManager.Instance.WrongMove();

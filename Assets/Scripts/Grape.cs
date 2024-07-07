@@ -38,15 +38,26 @@ public class Grape : MonoBehaviour {
       Vector3 endPoint = cells[i].transform.position + new Vector3(0, offset, 0);
       float elapsedTime = 0;
 
+      Vector3 startScale = transform.localScale;
+      Vector3 endScale = Vector3.zero;
+
       while (elapsedTime < duration) {
         elapsedTime += Time.deltaTime;
         float t = elapsedTime / duration;
         transform.position = Vector3.Lerp(startPoint, endPoint, t);
+
+        // if it is the last one then shrink
+        if (i == cells.Length - 1) {
+          transform.localScale = Vector3.Lerp(startScale, endScale, t);
+        }
+
         yield return null;
       }
 
       transform.position = endPoint; // Ensure the grape reaches the exact position
     }
+
+    Destroy(gameObject);
   }
 
   private void OnTriggerEnter(Collider other) {

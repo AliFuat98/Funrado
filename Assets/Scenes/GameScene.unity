@@ -528,8 +528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe476390ac7d3444af379fb5a9a76e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: {fileID: 11400000, guid: 110162b64daaeb7479cbfac3109eb68b, type: 2}
-  gridWidth: 3
+  currentLevel: {fileID: 11400000, guid: 45eff5ad2665fed4799b08d674c9f360, type: 2}
+  gridWidth: 4
   cellSize: 1.1
 --- !u!4 &534060046
 Transform:

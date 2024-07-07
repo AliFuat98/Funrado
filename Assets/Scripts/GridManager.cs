@@ -9,7 +9,7 @@ public class GridManager : MonoBehaviour {
 
   public Grid<GridObject> grid { get; private set; }
 
-  [SerializeField] private int gridWidth;
+  private int gridWidth;
   private int gridHeight;
   [SerializeField] private float cellSize = 2f;
 
@@ -18,7 +18,8 @@ public class GridManager : MonoBehaviour {
   }
 
   private void Start() {
-    gridHeight = gridWidth;
+    gridHeight = currentLevel.width;
+    gridHeight = currentLevel.width;
     grid = new Grid<GridObject>(gridWidth, gridHeight, cellSize, new Vector3(0, 0, 0), (Grid<GridObject> g, int x, int z) => new GridObject());
 
     Setup();
@@ -51,7 +52,10 @@ public class GridManager : MonoBehaviour {
     GridObject[,] gridArray = grid.GetGridArray();
     for (int x = 0; x < gridArray.GetLength(0); x++) {
       for (int z = 0; z < gridArray.GetLength(1); z++) {
-        gridArray[x, z].TopCell().ShowPlacedObject();
+        var topcell = gridArray[x, z].TopCell();
+        if (topcell != null) {
+          topcell.ShowPlacedObject();
+        }
       }
     }
   }
@@ -81,7 +85,9 @@ public class GridManager : MonoBehaviour {
 
     Destroy(topcellToDestroy.gameObject);
 
-    newTopCell.ShowPlacedObject(withEffect: true);
+    if (newTopCell != null) {
+      newTopCell.ShowPlacedObject(withEffect: true);
+    }
   }
 
   // ** transform is a container for cell **
@@ -118,5 +124,9 @@ public class GridManager : MonoBehaviour {
     public int StackCount() {
       return stack.Count;
     }
+  }
+
+  public int GetCurrentLevelMoveCount() {
+    return currentLevel.levelMoveCount;
   }
 }
