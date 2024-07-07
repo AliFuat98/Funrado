@@ -180,6 +180,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlacedObject: {fileID: 4706877088953628238}
+  BusyTestVisual: {fileID: 8374553638242435019}
+--- !u!1 &8374553638242435019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2612463614571177959, guid: 66130180bbcab3a4c9f62d2e279c5378,
+    type: 3}
+  m_PrefabInstance: {fileID: 5798720940745480236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8779491756071124000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3003396024461304844, guid: 66130180bbcab3a4c9f62d2e279c5378,

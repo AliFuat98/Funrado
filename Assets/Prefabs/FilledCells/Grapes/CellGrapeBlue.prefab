@@ -100,9 +100,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlacedObject: {fileID: 1007886226928792218}
+  BusyTestVisual: {fileID: 7975064694326162791}
 --- !u!4 &2822052994431155569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3437644357715222240, guid: 72e4478413de7bc4db511d60678c7227,
+    type: 3}
+  m_PrefabInstance: {fileID: 620658282575995793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7975064694326162791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7363414521866180342, guid: 72e4478413de7bc4db511d60678c7227,
     type: 3}
   m_PrefabInstance: {fileID: 620658282575995793}
   m_PrefabAsset: {fileID: 0}

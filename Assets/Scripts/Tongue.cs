@@ -42,41 +42,34 @@ public class Tongue : MonoBehaviour {
     CanGoNextCell = false;
 
     if ((grapeLayerMask.value & (1 << other.gameObject.layer)) != 0) {
+      // touched a grape in here
+
       CellGrape cellGrape = other.GetComponentInParent<CellGrape>();
 
       // check => colors are the same
-      if (cellGrape.Color != frog.Color) {
-        // play wrong grape animation
-        // reset the tongue verticies
-        // release the busy cells
-        Debug.Log("color is not the same");
-        return;
-      }
-
       // check ==> Cell is busy
-
-      if (cellGrape.IsCellBusy()) {
+      if (cellGrape.CellColor != frog.CellColor || cellGrape.IsCellBusy()) {
         // play wrong grape animation
         // reset the tongue verticies
         // release the busy cells
 
-        Debug.Log("cell busy");
+        Debug.Log("color is not the same");
+        frog.CancelEating();
         return;
       }
 
       // check => next cell is out of box
+
       var grid = GridManager.Instance.grid;
       var gridObject = grid.GetGridObject(cellGrape.X, cellGrape.Z, frog.LookDirectionVector);
       if (gridObject == null) {
         // FROG CAN EAT ALL GRAPES ON THE WAY
-        Debug.Log("FROG CAN EAT ALL GRAPES ON THE WAY");
+        frog.FinishEating(cellGrape);
         return;
       }
-      // there are other grape cell continue the process
-      // look at next cell
-      Debug.Log("look at next cell");
 
-      // add cell to visited cell stack
+      // there are other cell to continue the process
+      // look at next cell
       frog.ContinueEating(cellGrape);
     }
   }

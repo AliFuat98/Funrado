@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 183336086050746320}
   - component: {fileID: 7416727493744851311}
   - component: {fileID: 6956266612702768342}
+  - component: {fileID: 233532768200609303}
+  - component: {fileID: -578758006348308442}
   m_Layer: 7
   m_Name: GrapeBlue
   m_TagString: Untagged
@@ -105,3 +107,45 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.63336253, y: 0.5062599, z: 0.6215816}
   m_Center: {x: -0.0001603663, y: 0.014140509, z: 0.055995464}
+--- !u!54 &233532768200609303
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587549114951516857}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-578758006348308442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587549114951516857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6c7d700ec8ce64481ce3e5e67e25e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grapeLayerMask:
+    serializedVersion: 2
+    m_Bits: 128

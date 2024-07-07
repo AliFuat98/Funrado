@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlacedObject: {fileID: 5990873739250868366}
+  BusyTestVisual: {fileID: 8386447522542082386}
 --- !u!114 &467306887925531680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +309,12 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &8386447522542082386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2612463614571177959, guid: 66130180bbcab3a4c9f62d2e279c5378,
+    type: 3}
+  m_PrefabInstance: {fileID: 5774723331793534645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8758872920553462457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3003396024461304844, guid: 66130180bbcab3a4c9f62d2e279c5378,

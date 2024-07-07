@@ -4,7 +4,7 @@ public class Cell : MonoBehaviour {
   public int X { get; private set; }
   public int Z { get; private set; }
   public int K { get; private set; }
-  public CellColor Color { get; private set; }
+  public CellColor CellColor { get; private set; }
   public Direction LookDirection { get; private set; }
   public Vector2Int LookDirectionVector { get; private set; }
 
@@ -12,11 +12,17 @@ public class Cell : MonoBehaviour {
 
   private bool isBusy = false;
 
+  [SerializeField] protected GameObject BusyTestVisual;
+
   public void SetVar(int x, int z, int k, CellColor color, Direction direction) {
-    X = x; Z = z; K = k; Color = color; LookDirection = direction;
+    X = x; Z = z; K = k; CellColor = color; LookDirection = direction;
     RotatePlacedObject();
     SetLookDirectionVector();
     HidePlacedObject();
+  }
+
+  public GameObject GetPlacedObject() {
+    return PlacedObject;
   }
 
   public void ShowPlacedObject() {
@@ -32,6 +38,25 @@ public class Cell : MonoBehaviour {
 
   public void SetBusy(bool busy) {
     isBusy = busy;
+
+    // test
+    var grid = GridManager.Instance.grid;
+    var gridObject = grid.GetGridObject(X, Z);
+    var topCell = gridObject.TopCell();
+
+    BusyTestVisual.SetActive(true);
+
+    if (topCell.K == K) {
+      // this cell is the top cell show
+      Renderer renderer = BusyTestVisual.GetComponent<Renderer>();
+      if (busy) {
+        // change the color red is busy
+        renderer.material.color = Color.red;
+      } else {
+        // change the color green is not busy
+        renderer.material.color = Color.green;
+      }
+    }
   }
 
   public bool IsCellBusy() {

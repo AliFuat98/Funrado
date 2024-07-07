@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DrawLine : MonoBehaviour {
   private LineRenderer lineRenderer;
-  private List<Vector3> points;
+  public List<Vector3> points { get; private set; }
   [SerializeField] private Tongue tongue;
 
   [SerializeField] private Transform startPoint;
@@ -16,6 +16,14 @@ public class DrawLine : MonoBehaviour {
     lineRenderer.startColor = Color.red;
     lineRenderer.endColor = Color.red;
 
+    points = new() {
+      startPoint.position,
+    };
+
+    lineRenderer.positionCount = 1;
+  }
+
+  public void ClearTheLine() {
     points = new() {
       startPoint.position,
     };
@@ -53,40 +61,36 @@ public class DrawLine : MonoBehaviour {
     lineRenderer.SetPosition(points.Count - 1, endPoint);
   }
 
-  public void UndoLastPoint() {
-    if (points.Count > 0) {
-      // Son eklenen noktayý geri almak için coroutine baþlat
-      StartCoroutine(RemoveLastPointCoroutine());
-    }
+  public void UndoAllPoints() {
+    StartCoroutine(RemoveAllPointCoroutine());
   }
 
-  private IEnumerator RemoveLastPointCoroutine() {
-    Vector3 startPoint = points[points.Count - 2];
-    Vector3 endPoint = points[points.Count - 1];
-    float duration = 1.0f; // Çizginin kaybolma süresi
-    float elapsedTime = 0;
+  private IEnumerator RemoveAllPointCoroutine() {
+    while (points.Count > 1) {
+      Vector3 startPoint = points[points.Count - 2];
+      Vector3 endPoint = points[points.Count - 1];
+      float duration = 1.0f; // line dissappear time
+      float elapsedTime = 0;
 
-    while (elapsedTime < duration) {
-      elapsedTime += Time.deltaTime;
-      float t = elapsedTime / duration;
-      Vector3 currentPoint = Vector3.Lerp(endPoint, startPoint, t);
-      lineRenderer.SetPosition(points.Count - 1, currentPoint);
+      while (elapsedTime < duration) {
+        elapsedTime += Time.deltaTime;
+        float t = elapsedTime / duration;
+        Vector3 currentPoint = Vector3.Lerp(endPoint, startPoint, t);
+        lineRenderer.SetPosition(points.Count - 1, currentPoint);
 
-      // tongue settings
-      tongue.transform.position = currentPoint;
-      tongue.StartMovingBackward();
-      yield return null;
-    }
+        // tongue settings
+        tongue.transform.position = currentPoint;
+        tongue.StartMovingBackward();
+        yield return null;
+      }
 
-    tongue.StopMoving();
+      points.RemoveAt(points.Count - 1);
 
-    // Son noktayý listeden ve stack'ten çýkar
-    points.RemoveAt(points.Count - 1);
-
-    // Çizgiyi güncelle
-    lineRenderer.positionCount = points.Count;
-    if (points.Count > 0) {
-      lineRenderer.SetPositions(points.ToArray());
+      // update line rendere
+      lineRenderer.positionCount = points.Count;
+      if (points.Count > 0) {
+        lineRenderer.SetPositions(points.ToArray());
+      }
     }
   }
 }
