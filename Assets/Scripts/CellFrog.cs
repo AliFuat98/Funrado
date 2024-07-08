@@ -74,8 +74,13 @@ public class CellFrog : Cell {
   // if the player's move is correct then this function will be called
   public void StartEating(Cell lastCell) {
     SoundManager.Instance.GetBackTongue();
+
+
     visitedCellStack.Push(lastCell);
     lastCell.SetBusy(true);
+
+    // assign lastGrape
+    AssignLastGrape();
 
     // get back the tongue
     drawLine.UndoAllPoints();
@@ -85,6 +90,17 @@ public class CellFrog : Cell {
 
     // move a grape
     MoveNextGrape();
+  }
+
+  private void AssignLastGrape() {
+    CellGrape lastGrape = null;
+    foreach (var cell in visitedCellStack.ToArray()) {
+      if (cell is CellGrape) {
+        lastGrape = cell as CellGrape;
+      }
+    }
+
+    lastGrape.GetComponentInChildren<Grape>().lastGrape = true;
   }
 
   private IEnumerator GetNextCells() {

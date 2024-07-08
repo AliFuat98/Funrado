@@ -10,6 +10,7 @@ public class Grape : MonoBehaviour {
   private CellFrog frog = null;
   private CellGrape cellGrape;
   private Animator animator;
+  public bool lastGrape;
 
   private void Start() {
     duration = GameManager.Instance.GetDuration();
@@ -32,6 +33,9 @@ public class Grape : MonoBehaviour {
 
   private IEnumerator MoveAlongPoints() {
     IsMoving = true;
+    if (lastGrape) {
+      SoundManager.Instance.Reward();
+    }
     for (int i = 0; i <= cells.Length - 1; i++) {
       Vector3 startPoint = transform.position;
       float offset = 0.2f;

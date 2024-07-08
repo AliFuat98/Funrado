@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,12 +25,13 @@ public class UIManager : MonoBehaviour {
   }
 
   private void Start() {
-    GameManager.Instance.OnGameOver += GameManager_OnGameOver;
-    GameManager.Instance.OnMakeMove += GameManager_OnMakeMove;
-    GameManager.Instance.GameManagerReady += GameManager_GameManagerReady;
+    StartCoroutine(Setup());
   }
 
-  private void GameManager_GameManagerReady(object sender, System.EventArgs e) {
+  private IEnumerator Setup() {
+    yield return new WaitForSeconds(.2f);
+    GameManager.Instance.OnGameOver += GameManager_OnGameOver;
+    GameManager.Instance.OnMakeMove += GameManager_OnMakeMove;
     gameLevelText.text = $"Level {GameManager.Instance.GameLevel}";
     moveCountText.text = $"{GameManager.Instance.MoveCount} Moves";
   }

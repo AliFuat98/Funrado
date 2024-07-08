@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour {
 
   public event EventHandler OnMakeMove;
 
-  public event EventHandler GameManagerReady;
-
   public event EventHandler<OnGameOverEventArgs> OnGameOver;
 
   public class OnGameOverEventArgs : EventArgs {
@@ -57,8 +55,6 @@ public class GameManager : MonoBehaviour {
   void Start() {
     MoveCount = levelList[currentLevelIndex].levelMoveCount;
     GameLevel = levelList[currentLevelIndex].gameLevel;
-
-    GameManagerReady.Invoke(this, EventArgs.Empty);
   }
 
   void Update() {
