@@ -439,14 +439,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelList:
+  - {fileID: 11400000, guid: ea22c88c4e22e2440af9cbc222f86061, type: 2}
   - {fileID: 11400000, guid: 45eff5ad2665fed4799b08d674c9f360, type: 2}
-  ChooseLevelPage: {fileID: 2109733399}
-  WinPage: {fileID: 665829400}
-  LosePage: {fileID: 479294322}
-  moveCountText: {fileID: 602760361}
-  gameLevelText: {fileID: 95210989}
-  playButton: {fileID: 794169453}
-  levelIndexInputField: {fileID: 280958730}
+  - {fileID: 11400000, guid: 5e49feebd75a72348bd640ef7ec798a5, type: 2}
   mouseColliderLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -479,7 +474,7 @@ GameObject:
   - component: {fileID: 195901702}
   - component: {fileID: 195901701}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -861,8 +856,8 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.8537736, g: 0.93430406, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1998,6 +1993,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916847513}
   m_CullTransparentMesh: 1
+--- !u!1 &962663447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 962663449}
+  - component: {fileID: 962663448}
+  m_Layer: 0
+  m_Name: UImanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &962663448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962663447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74592c9b12c213a4f8c74613133decee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChooseLevelPage: {fileID: 2109733399}
+  WinPage: {fileID: 665829400}
+  LosePage: {fileID: 479294322}
+  moveCountText: {fileID: 602760361}
+  gameLevelText: {fileID: 95210989}
+  playButton: {fileID: 794169453}
+  levelIndexInputField: {fileID: 280958730}
+--- !u!4 &962663449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962663447}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1203324382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,7 +2056,7 @@ GameObject:
   - component: {fileID: 1203324385}
   - component: {fileID: 1203324384}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: ChooseLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2383,7 +2429,7 @@ GameObject:
   - component: {fileID: 1471630622}
   - component: {fileID: 1471630621}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: PanelUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2860,7 +2906,7 @@ GameObject:
   - component: {fileID: 1945834143}
   - component: {fileID: 1945834142}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2992,12 +3038,12 @@ GameObject:
   - component: {fileID: 2109733402}
   - component: {fileID: 2109733401}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: ChooseLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2109733400
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3465,6 +3511,7 @@ SceneRoots:
   - {fileID: 111828519}
   - {fileID: 1845028354}
   - {fileID: 1816775607}
+  - {fileID: 962663449}
   - {fileID: 534060046}
   - {fileID: 330585546}
   - {fileID: 410087041}

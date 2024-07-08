@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stack 8
   m_EditorClassIdentifier: 
   CellSOList:
-  - {fileID: 11400000, guid: 03a110ffc3fc2d04b9f414b4816da9b3, type: 2}
+  - {fileID: 11400000, guid: 7e1e10676dd24314c8ca0aa210128759, type: 2}

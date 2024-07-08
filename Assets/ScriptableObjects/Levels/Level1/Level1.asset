@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellStackSOList:
   - {fileID: 11400000, guid: 66c2205057ecdd24cb93a0c1084b2b54, type: 2}
-  - {fileID: 11400000, guid: 071df38a951a4a64da6d9f2fc1f464ac, type: 2}
-  - {fileID: 11400000, guid: b053c327078b61543b92d49f329efd07, type: 2}
-  - {fileID: 11400000, guid: 593eb2d79bd9c114f80da8c1f48115ea, type: 2}
-  - {fileID: 11400000, guid: a66d58fa9391733419cd9ebdac825124, type: 2}
-  - {fileID: 11400000, guid: 53b9cfc61bb07754f9bfead7cb779117, type: 2}
-  - {fileID: 11400000, guid: 8fe269b05b38d204fbbf20e80868263a, type: 2}
-  - {fileID: 11400000, guid: f88db15e439acda4096510dd994b6a20, type: 2}
-  - {fileID: 11400000, guid: ecbddfe4ec81ef4478bf7c7ca4060729, type: 2}
-  - {fileID: 11400000, guid: afd68f4b91bc68141b3d70815a417e43, type: 2}
-  - {fileID: 11400000, guid: 4c0efda7b565a1e47a0378bb8e83f92f, type: 2}
-  - {fileID: 11400000, guid: 8bb357e7c56ebc04b999031d79eae1d3, type: 2}
-  - {fileID: 11400000, guid: 68231f21d2c3c0b4eaabfbf66b914ee6, type: 2}
-  - {fileID: 11400000, guid: 47656a83d772b59499a2a14c91e33c26, type: 2}
-  - {fileID: 11400000, guid: a56ef644a58b92b4e8a7d35166449082, type: 2}
-  - {fileID: 11400000, guid: 63d93fbab31c2124b890e0b0f35d971c, type: 2}
-  levelMoveCount: 2
+  - {fileID: 11400000, guid: ef6ddf175b361e048beec686b78d505b, type: 2}
+  - {fileID: 11400000, guid: fe618c9987bb4584186edbe6c0475872, type: 2}
+  - {fileID: 11400000, guid: e3b1d754800697c45aadc39eca5b55a0, type: 2}
+  - {fileID: 11400000, guid: b225284c4cd3cac44b87fd3ffe299035, type: 2}
+  - {fileID: 11400000, guid: e242fbd88ac28164e9494f2b96e668cc, type: 2}
+  - {fileID: 11400000, guid: 7d0f39c70a80d7144ac92b200066dfb7, type: 2}
+  - {fileID: 11400000, guid: 20b7db4097bc864418e1e77bf62760b7, type: 2}
+  - {fileID: 11400000, guid: 7d41fb838dd7dd14baa9f31c57d6d242, type: 2}
+  - {fileID: 11400000, guid: d1246610419b8e3418b90a33cfdfc97c, type: 2}
+  - {fileID: 11400000, guid: 84d8f5b6cbb9ed1438ec853182bcf905, type: 2}
+  - {fileID: 11400000, guid: a60f8c23a8b29774e9b3938a8a3dde10, type: 2}
+  - {fileID: 11400000, guid: efe67ab07edd94e4da147e7cbb9cd06f, type: 2}
+  - {fileID: 11400000, guid: b36de33473442314d8ac180a588fcec8, type: 2}
+  - {fileID: 11400000, guid: f4a6675ca781a944c901a15864549ea1, type: 2}
+  - {fileID: 11400000, guid: 6edd502ce662d1545a4add15d96461f3, type: 2}
+  levelMoveCount: 15
   width: 4
   gameLevel: 1

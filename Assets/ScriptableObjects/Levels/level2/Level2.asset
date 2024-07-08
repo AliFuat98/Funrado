@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80327c4df03a4c448a77abd3e6cc1611, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  cellStackSOList:
+  - {fileID: 11400000, guid: 9e88d955a1c835549a1b39e87c6b45fe, type: 2}
+  - {fileID: 11400000, guid: 56325f9fca60cda4aa05e85ff676581b, type: 2}
+  - {fileID: 11400000, guid: 6cef82cf331b3214f9ba481a81406c39, type: 2}
+  - {fileID: 11400000, guid: 3be64a676da1d314c9eaadf1e6c2750a, type: 2}
+  - {fileID: 11400000, guid: b49e4a29359fd5b44ab055b68dee160a, type: 2}
+  - {fileID: 11400000, guid: f4cf3ac653e0aab438ce05ed82f28cf3, type: 2}
+  - {fileID: 11400000, guid: 4f1aeb17bdc38fc4abcb719f0fe2d3d3, type: 2}
+  - {fileID: 11400000, guid: b22de6312e375c34fbc4da08658e200e, type: 2}
+  - {fileID: 11400000, guid: 458f7978b98778e4d96fa2edc7def050, type: 2}
+  - {fileID: 11400000, guid: 085487c4496e9e548b7cd438a61450bd, type: 2}
+  - {fileID: 11400000, guid: 2089bdfb7c840b047b0fc85a65fcaf6d, type: 2}
+  - {fileID: 11400000, guid: 32ac43fcd49ec18499c04617e7cdca78, type: 2}
+  - {fileID: 11400000, guid: c696921bf160334479f7f5dfb8721f8e, type: 2}
+  - {fileID: 11400000, guid: 7f5eaf7b4574162439bb535e548be40f, type: 2}
+  - {fileID: 11400000, guid: 30fecb363fa104746ad944ec281d5fa2, type: 2}
+  - {fileID: 11400000, guid: 6586f9ef15b70fa459434a231e7eb21d, type: 2}
+  - {fileID: 11400000, guid: 5242cc7cbff179b4cabdb13272c68cef, type: 2}
+  - {fileID: 11400000, guid: 4b18e69f48c7b78439b3b3b9b4ded7e3, type: 2}
+  - {fileID: 11400000, guid: 47321be8922abb2479707c0f09891716, type: 2}
+  - {fileID: 11400000, guid: d9731bf71cd472b4a90090e6ebd3aced, type: 2}
+  - {fileID: 11400000, guid: e5a160e373e887349b22b5b5d4331bd4, type: 2}
+  - {fileID: 11400000, guid: 61af7499c8a1818439a5a5086168bda1, type: 2}
+  - {fileID: 11400000, guid: 71bf6c1e1bfc0134dbdf5b74025218d8, type: 2}
+  - {fileID: 11400000, guid: e4819119d88d5ff4db26825524324551, type: 2}
+  - {fileID: 11400000, guid: 9d79708f8a1050f4d9a1e65a2950245c, type: 2}
+  levelMoveCount: 15
+  width: 5
+  gameLevel: 2

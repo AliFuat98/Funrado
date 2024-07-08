@@ -1,41 +1,41 @@
+using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
   public static GameManager Instance { get; private set; }
 
+  public event EventHandler OnMakeMove;
+
+  public event EventHandler GameManagerReady;
+
+  public event EventHandler<OnGameOverEventArgs> OnGameOver;
+
+  public class OnGameOverEventArgs : EventArgs {
+    public bool win;
+  }
+
   [SerializeField] private List<LevelSO> levelList;
-
-  [SerializeField] private GameObject ChooseLevelPage;
-  [SerializeField] private GameObject WinPage;
-  [SerializeField] private GameObject LosePage;
-
-  [SerializeField] private TextMeshProUGUI moveCountText;
-  [SerializeField] private TextMeshProUGUI gameLevelText;
-  [SerializeField] private Button playButton;
-  [SerializeField] private TMP_InputField levelIndexInputField;
 
   [SerializeField] private LayerMask mouseColliderLayerMask = new LayerMask();
   [SerializeField] private float duration = 1f;
 
   private int currentLevelIndex = 0;
-  private int moveCount;
-  private int gameLevel;
+  public int MoveCount { get; private set; }
+  public int GameLevel { get; private set; }
 
   private void Awake() {
-    Instance = this;
-    DontDestroyOnLoad(gameObject);
-
-    playButton.onClick.AddListener(() => {
-      PlayGame();
-    });
+    if (Instance == null) {
+      Instance = this;
+      DontDestroyOnLoad(gameObject);
+    } else if (Instance != this) {
+      Destroy(gameObject);
+    }
   }
 
-  private void PlayGame() {
-    if (int.TryParse(levelIndexInputField.text, out int result)) {
+  public void PlayGame(string inputField) {
+    if (int.TryParse(inputField, out int result)) {
       if (result > levelList.Count || result < 1) {
         return;
       }
@@ -55,14 +55,10 @@ public class GameManager : MonoBehaviour {
   }
 
   void Start() {
-    moveCount = levelList[currentLevelIndex].levelMoveCount;
-    gameLevel = levelList[currentLevelIndex].gameLevel;
-    RefreshTexts();
-  }
+    MoveCount = levelList[currentLevelIndex].levelMoveCount;
+    GameLevel = levelList[currentLevelIndex].gameLevel;
 
-  private void RefreshTexts() {
-    gameLevelText.text = $"Level {gameLevel}";
-    moveCountText.text = $"{moveCount} Moves";
+    GameManagerReady.Invoke(this, EventArgs.Empty);
   }
 
   void Update() {
@@ -73,10 +69,16 @@ public class GameManager : MonoBehaviour {
         cell.StartCollecting();
       }
     }
+
+    if (Input.GetKeyDown(KeyCode.Space)) {
+      Debug.Log(currentLevelIndex);
+    }
   }
 
   public void GetLevelWithIndex(int gameLevel) {
     currentLevelIndex = gameLevel;
+    MoveCount = levelList[currentLevelIndex].levelMoveCount;
+    GameLevel = levelList[currentLevelIndex].gameLevel;
     // Get the active scene
     Scene currentScene = SceneManager.GetActiveScene();
     // Reload the current scene
@@ -84,26 +86,17 @@ public class GameManager : MonoBehaviour {
   }
 
   public void DecreaseMove() {
-    moveCount--;
-    if (moveCount <= 0) {
+    MoveCount--;
+    if (MoveCount <= 0) {
       // game is over
       GameOver(win: false);
     }
-
-    RefreshTexts();
+    OnMakeMove.Invoke(this, EventArgs.Empty);
   }
 
   public void GameOver(bool win) {
-    if (win) {
-      // pop up win
-      Debug.Log("you win");
-      WinPage.SetActive(true);
-    } else {
-      // pop up lose
-      Debug.Log("you lose");
-      LosePage.SetActive(true);
-    }
-
-    ChooseLevelPage.SetActive(true);
+    OnGameOver.Invoke(this, new() {
+      win = win
+    });
   }
 }
