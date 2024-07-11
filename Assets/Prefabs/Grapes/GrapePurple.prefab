@@ -149,3 +149,7 @@ MonoBehaviour:
   grapeLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  tongueLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  lastGrape: 0
