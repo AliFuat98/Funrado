@@ -2,8 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 public class Grape : MonoBehaviour {
-  public LayerMask grapeLayerMask;
-  public LayerMask tongueLayerMask;
+  [SerializeField] private LayerMask grapeLayerMask;
+  [SerializeField] private LayerMask tongueLayerMask;
   private Cell[] cells;
   private float duration = 1.0f;
   private bool IsMoving = false;

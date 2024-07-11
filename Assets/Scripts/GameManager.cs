@@ -32,6 +32,21 @@ public class GameManager : MonoBehaviour {
     }
   }
 
+  void Start() {
+    MoveCount = levelList[currentLevelIndex].levelMoveCount;
+    GameLevel = levelList[currentLevelIndex].gameLevel;
+  }
+
+  void Update() {
+    if (Input.GetKeyDown(KeyCode.Mouse0)) {
+      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+      if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask)) {
+        var cell = raycastHit.transform.GetComponent<Cell>();
+        cell.StartCollecting();
+      }
+    }
+  }
+
   public void PlayGame(string inputField) {
     if (int.TryParse(inputField, out int result)) {
       if (result > levelList.Count || result < 1) {
@@ -52,25 +67,6 @@ public class GameManager : MonoBehaviour {
     return levelList[currentLevelIndex];
   }
 
-  void Start() {
-    MoveCount = levelList[currentLevelIndex].levelMoveCount;
-    GameLevel = levelList[currentLevelIndex].gameLevel;
-  }
-
-  void Update() {
-    if (Input.GetKeyDown(KeyCode.Mouse0)) {
-      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-      if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseColliderLayerMask)) {
-        var cell = raycastHit.transform.GetComponent<Cell>();
-        cell.StartCollecting();
-      }
-    }
-
-    if (Input.GetKeyDown(KeyCode.Space)) {
-      Debug.Log(currentLevelIndex);
-    }
-  }
-
   public void GetLevelWithIndex(int gameLevel) {
     currentLevelIndex = gameLevel;
     MoveCount = levelList[currentLevelIndex].levelMoveCount;
@@ -81,7 +77,7 @@ public class GameManager : MonoBehaviour {
     SceneManager.LoadScene(currentScene.name);
   }
 
-  public void DecreaseMove() {
+  public void DecreaseMoveCount() {
     MoveCount--;
     if (MoveCount <= 0) {
       // game is over
