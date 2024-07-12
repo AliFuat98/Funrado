@@ -43,21 +43,11 @@ public class DrawLine : MonoBehaviour {
   private IEnumerator DrawLineCoroutine() {
     Vector3 startPoint = points[points.Count - 2];
     Vector3 endPoint = points[points.Count - 1];
-    float elapsedTime = 0;
 
-    while (elapsedTime < duration) {
-      elapsedTime += Time.deltaTime;
-      float t = elapsedTime / duration;
-      Vector3 currentPoint = Vector3.Lerp(startPoint, endPoint, t);
-      lineRenderer.SetPosition(points.Count - 2, startPoint);
-      lineRenderer.SetPosition(points.Count - 1, currentPoint);
+    lineRenderer.SetPosition(points.Count - 2, startPoint);
+    tongue.StartMovingForward();
 
-      // tongue settings
-      tongue.transform.position = currentPoint;
-      tongue.StartMovingForward();
-
-      yield return null;
-    }
+    yield return AnimateLine(startPoint, endPoint);
 
     tongue.StopMoving();
     lineRenderer.SetPosition(points.Count - 1, endPoint);
@@ -71,19 +61,9 @@ public class DrawLine : MonoBehaviour {
     while (points.Count > 1) {
       Vector3 startPoint = points[points.Count - 2];
       Vector3 endPoint = points[points.Count - 1];
-      float elapsedTime = 0;
+      tongue.StartMovingBackward();
 
-      while (elapsedTime < duration) {
-        elapsedTime += Time.deltaTime;
-        float t = elapsedTime / duration;
-        Vector3 currentPoint = Vector3.Lerp(endPoint, startPoint, t);
-        lineRenderer.SetPosition(points.Count - 1, currentPoint);
-
-        // tongue settings
-        tongue.transform.position = currentPoint;
-        tongue.StartMovingBackward();
-        yield return null;
-      }
+      yield return AnimateLine(endPoint, startPoint);
 
       points.RemoveAt(points.Count - 1);
 
@@ -92,6 +72,22 @@ public class DrawLine : MonoBehaviour {
       if (points.Count > 0) {
         lineRenderer.SetPositions(points.ToArray());
       }
+    }
+  }
+
+  private IEnumerator AnimateLine(Vector3 startPoint, Vector3 endPoint) {
+    float elapsedTime = 0;
+
+    while (elapsedTime < duration) {
+      elapsedTime += Time.deltaTime;
+      float t = elapsedTime / duration;
+      Vector3 currentPoint = Vector3.Lerp(startPoint, endPoint, t);
+
+      lineRenderer.SetPosition(points.Count - 1, currentPoint);
+
+      tongue.transform.position = currentPoint;
+
+      yield return null;
     }
   }
 }

@@ -117,6 +117,8 @@ public class CellFrog : Cell {
     var cell = visitedCellStack.Pop();
     if (cell is CellGrape) {
       cell.GetComponentInChildren<Grape>().MoveToFrog(visitedCellStack.ToArray());
+    } else {
+      MoveNextGrape();
     }
   }
 

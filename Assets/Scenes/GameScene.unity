@@ -439,14 +439,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelList:
-  - {fileID: 11400000, guid: 110162b64daaeb7479cbfac3109eb68b, type: 2}
   - {fileID: 11400000, guid: ea22c88c4e22e2440af9cbc222f86061, type: 2}
   - {fileID: 11400000, guid: 45eff5ad2665fed4799b08d674c9f360, type: 2}
   - {fileID: 11400000, guid: 5e49feebd75a72348bd640ef7ec798a5, type: 2}
+  - {fileID: 11400000, guid: 110162b64daaeb7479cbfac3109eb68b, type: 2}
   mouseColliderLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  duration: 0.5
+  duration: 0.35
 --- !u!4 &111828519
 Transform:
   m_ObjectHideFlags: 0

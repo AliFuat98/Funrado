@@ -83,11 +83,11 @@ public class GameManager : MonoBehaviour {
       // game is over
       GameOver(win: false);
     }
-    OnMakeMove.Invoke(this, EventArgs.Empty);
+    OnMakeMove?.Invoke(this, EventArgs.Empty);
   }
 
   public void GameOver(bool win) {
-    OnGameOver.Invoke(this, new() {
+    OnGameOver?.Invoke(this, new() {
       win = win
     });
   }
